@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Styling App</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: black;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+    height: 40vh;
+    background: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e') center/cover;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+}
+.hero h1 {
+    font-size: 30px;
+}
+
+/* APP */
+.app {
+    padding: 15px;
+}
+
+/* UPLOAD */
+.upload {
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    margin-top: 10px;
+}
+
+/* CARD STACK */
+.card-container {
+    position: relative;
+    height: 400px;
+}
+
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: grab;
+    transition: 0.3s;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* OVERLAY */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+}
+
+/* ANIMATION */
+.swipe-right {
+    transform: translateX(500px) rotate(20deg);
+    opacity: 0;
+}
+.swipe-left {
+    transform: translateX(-500px) rotate(-20deg);
+    opacity: 0;
+}
+
+/* LOADING */
+.loading {
+    text-align: center;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+    <h1>AI Style Assistant 🤖</h1>
+</div>
+
+<div class="app">
+
+    <!-- UPLOAD -->
+    <div class="upload">
+        <p>Upload your photo 👇</p>
+        <input type="file" id="upload">
+        <button onclick="analyze()">Analyze Style</button>
+        <div class="loading" id="loading"></div>
+    </div>
+
+    <!-- CARDS -->
+    <div class="card-container" id="cards"></div>
+
+</div>
+
+<script>
+const outfits = [
+{
+img:"https://images.unsplash.com/photo-1495121605193-b116b5b09a7e",
+text:"Casual Look 👗 White Top + Jeans"
+},
+{
+img:"https://images.unsplash.com/photo-1483985988355-763728e1935b",
+text:"Party Look ✨ Black Dress"
+},
+{
+img:"https://images.unsplash.com/photo-1521335629791-ce4aec67dd47",
+text:"Street Style 😎 Oversized Outfit"
+}
+];
+
+function analyze(){
+    document.getElementById("loading").innerText = "AI analyzing your style...";
+    
+    setTimeout(()=>{
+        document.getElementById("loading").innerText = "Suggestions ready!";
+        showCards();
+    },2000);
+}
+
+function showCards(){
+    const container = document.getElementById("cards");
+    container.innerHTML = "";
+
+    outfits.forEach((item,index)=>{
+        const card = document.createElement("div");
+        card.className = "card";
+        card.style.zIndex = outfits.length - index;
+
+        card.innerHTML = `
+            <img src="${item.img}">
+            <div class="overlay">
+                <h3>${item.text}</h3>
+            </div>
+        `;
+
+        addSwipe(card);
+        container.appendChild(card);
+    });
+}
+
+function addSwipe(card){
+    let startX;
+
+    card.addEventListener("mousedown",(e)=>{
+        startX = e.clientX;
+
+        document.onmousemove = (e)=>{
+            let move = e.clientX - startX;
+            card.style.transform = `translateX(${move}px) rotate(${move/10}deg)`;
+        };
+
+        document.onmouseup = (e)=>{
+            let move = e.clientX - startX;
+
+            if(move > 100){
+                card.classList.add("swipe-right");
+            } else if(move < -100){
+                card.classList.add("swipe-left");
+            } else {
+                card.style.transform = "";
+            }
+
+            document.onmousemove = null;
+        };
+    });
+}
+</script>
+
+</body>
+</html>
