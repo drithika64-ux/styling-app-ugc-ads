@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UGC Ad Prompt System</title>
+  <style>
+    /* General Styles */
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family: 'Arial', sans-serif; background-color: #fdf6f0; color: #333; line-height: 1.6; }
+
+    /* Header / Hero */
+    header {
+      background: url('https://via.placeholder.com/1600x600') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 120px 20px 80px 20px;
+      position: relative;
+    }
+    header::after {
+      content:'';
+      position:absolute;
+      top:0; left:0; width:100%; height:100%;
+      background: rgba(255, 182, 193, 0.5); /* pastel overlay */
+      z-index:0;
+    }
+    header h1 {
+      font-size: 3em;
+      z-index:1;
+      position: relative;
+    }
+    header p {
+      font-size:1.3em;
+      margin-top: 10px;
+      z-index:1;
+      position: relative;
+    }
+
+    /* Navbar */
+    nav {
+      background: #fbc2eb;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 15px 0;
+    }
+    nav a {
+      color: #333;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #ff69b4; text-decoration: underline; }
+
+    /* Sections */
+    section {
+      padding: 60px 20px;
+      margin: 20px auto;
+      max-width: 1000px;
+      background: #fff8f0;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    section h2 {
+      color: #6a4c93;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+    section p, section ul li { font-size: 1.1em; margin-bottom: 10px; }
+    section ul { list-style: none; padding-left:0; }
+
+    /* Background images for sections */
+    .bg-section {
+      background: url('https://via.placeholder.com/1000x300') no-repeat center center/cover;
+      color: white;
+      padding: 60px 20px;
+      margin: 20px auto;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg,#a8edea,#fed6e3);
+      color: #333;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin: 10px 10px 0 0;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Testimonials */
+    .testimonial {
+      background: #e3f6f5;
+      padding: 20px;
+      margin: 15px 0;
+      border-left: 6px solid #a8edea;
+      border-radius: 8px;
+      font-style: italic;
+    }
+
+    /* Images */
+    img { width: 100%; border-radius: 12px; margin-top: 15px; }
+
+    /* Footer */
+    footer {
+      background: #fbc2eb;
+      color: #333;
+      text-align: center;
+      padding: 25px 20px;
+      margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+      header h1 { font-size:2.2em; }
+      nav { flex-direction: column; }
+      nav a { margin: 10px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <h1>UGC Ad Prompt System</h1>
+  <p>Create High-Converting Ads with AI-Powered Prompts</p>
+</header>
+
+<!-- Navbar -->
+<nav>
+  <a href="#about">About</a>
+  <a href="#features">Features</a>
+  <a href="#examples">Examples</a>
+  <a href="#testimonials">Testimonials</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- About Section -->
+<section id="about">
+  <h2>About the Project</h2>
+  <p>The UGC Ad Prompt System helps brands generate engaging user-generated content ads using AI-powered structured prompts. Save time, boost engagement, and improve conversions.</p>
+  <img src="https://via.placeholder.com/1000x400" alt="Project Interface">
+</section>
+
+<!-- Features Section with background image -->
+<section class="bg-section" id="features">
+  <h2>Features</h2>
+  <ul>
+    <li>AI-generated ad scripts</li>
+    <li>Hook-based storytelling</li>
+    <li>Emotional triggers & call-to-actions</li>
+    <li>Supports multiple platforms (Instagram, Facebook, YouTube)</li>
+    <li>Editable and customizable outputs</li>
+  </ul>
+  <a href="#contact" class="btn">Try Now</a>
+</section>
+
+<!-- Examples Section -->
+<section id="examples">
+  <h2>Sample Ad Scripts</h2>
+  <div class="testimonial">
+    "This product changed my daily routine!" - Example UGC Script
+  </div>
+  <div class="testimonial">
+    "I can't live without this service anymore!" - Example UGC Script
+  </div>
+  <a href="#contact" class="btn">Learn More</a>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials">
+  <h2>What Users Say</h2>
+  <div class="testimonial">
+    "The AI prompts helped me write ads 5x faster!" - Rohan
+  </div>
+  <div class="testimonial">
+    "I increased my ad engagement by 70% thanks to this system!" - Priya
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <h2>Contact & Get Started</h2>
+  <p>Email: contact@ugcprompts.in</p>
+  <p>Phone: +91 98765 43210</p>
+  <p>Address: 45, Tech Park, Chennai, India</p>
+  <a href="mailto:contact@ugcprompts.in" class="btn">Email Us</a>
+  <a href="#examples" class="btn">Request Demo</a>
+</section>
+
+<!-- Footer -->
+<footer>
+  &copy; 2026 UGC Ad Prompt System. All rights reserved.
+</footer>
+
+</body>
+</html>
